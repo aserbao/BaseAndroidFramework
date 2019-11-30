@@ -7,14 +7,21 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.baseandroidframework.R;
+import com.example.baseandroidframework.dagger2.component.DaggerActivityComponent;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,47 +37,64 @@ public class RetrofitActivity extends AppCompatActivity {
     @BindView(R.id.show_tv)
     TextView mShowTv;
 
+    @Inject
+    Observable<List<Repo>> mObservable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retrofit);
         ButterKnife.bind(this);
+        DaggerActivityComponent.builder().build().inject(this);
     }
 
 
     @OnClick(R.id.request_btn)
     public void onViewClicked() {
+        testDagger2AndRetrofit();
+//        testRetrofit();
 
+    }
+
+    private void testDagger2AndRetrofit() {
+        if (mObservable != null) {
+            mObservable.subscribe(new Consumer<List<Repo>>() {
+                @Override
+                public void accept(List<Repo> repos) throws Throwable {
+                    updateUi(repos);
+                }
+            });
+        }
+    }
+
+    private void testRetrofit() {
+        Retrofit retrofit = getRetrofit();
+
+        IGitHubService service = retrofit.create(IGitHubService.class);
+
+        service.listRepos("aserbao")
+        .subscribe(new Consumer<List<Repo>>() {
+            @Override
+            public void accept(List<Repo> repos) throws Throwable {
+                updateUi(repos);
+            }
+        });
+    }
+
+    @NotNull
+    private Retrofit getRetrofit() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS)
                 //添加OkHttp3的拦截器
                 .addInterceptor(new LoggingInterceptor())
                 .writeTimeout(20, TimeUnit.SECONDS).readTimeout(20, TimeUnit.SECONDS)
                 .build();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
 //                .baseUrl("https://api.github.com/")
-                .baseUrl("https://api.github.com/")
+                .baseUrl("https://api.github.com/user/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
-
-        IGitHubService service = retrofit.create(IGitHubService.class);
-
-        Call<List<Repo>> listRepos = service.listRepos("aserbao");
-//        Call<List<Repo>> listRepos = service.listRepos2("aserbao");
-//        Call<List<Repo>> listRepos = service.listAbsRepos();
-        listRepos.enqueue(new Callback<List<Repo>>() {
-            @Override
-            public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
-                updateUi(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<Repo>> call, Throwable t) {
-
-            }
-        });
-
     }
 
     public void updateUi(List<Repo> body){
