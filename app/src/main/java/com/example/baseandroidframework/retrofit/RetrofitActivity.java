@@ -60,7 +60,7 @@ public class RetrofitActivity extends AppCompatActivity {
         if (mObservable != null) {
             mObservable.subscribe(new Consumer<List<Repo>>() {
                 @Override
-                public void accept(List<Repo> repos) throws Throwable {
+                public void accept(List<Repo> repos) {
                     updateUi(repos);
                 }
             });
@@ -75,7 +75,7 @@ public class RetrofitActivity extends AppCompatActivity {
         service.listRepos("aserbao")
         .subscribe(new Consumer<List<Repo>>() {
             @Override
-            public void accept(List<Repo> repos) throws Throwable {
+            public void accept(List<Repo> repos) {
                 updateUi(repos);
             }
         });

@@ -11,6 +11,7 @@ import dagger.Module;
 import dagger.Provides;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Path;
 
@@ -24,6 +25,7 @@ public class NetModule {
   Retrofit provideRetrofit() {
     return new Retrofit
         .Builder()
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
         .baseUrl(COUNTRY_SERVICE_BASE_URLL)
         .build();
