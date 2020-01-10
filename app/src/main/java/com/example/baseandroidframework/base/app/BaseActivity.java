@@ -1,4 +1,4 @@
-package com.example.baseandroidframework.base;
+package com.example.baseandroidframework.base.app;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
  * com.example.baseandroidframework.base
  * 2019-11-23
  */
-public abstract class ABaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
     private Activity mContext;
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.baseandroidframework.dagger2.module;
+package com.example.baseandroidframework.base.dagger2.module;
 
 import com.example.baseandroidframework.retrofit.IGitHubService;
 import com.example.baseandroidframework.retrofit.Repo;
@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Path;
 
 @Module
-public class NetModule {
+public class HttpModule {
 
   public static final String COUNTRY_SERVICE_BASE_URLL = "https://api.github.com/user/";
 

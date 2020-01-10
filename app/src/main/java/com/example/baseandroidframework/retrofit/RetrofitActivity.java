@@ -22,12 +22,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -58,7 +56,10 @@ public class RetrofitActivity extends AppCompatActivity {
 
     private void testDagger2AndRetrofit() {
         if (mObservable != null) {
-            mObservable.subscribe(new Consumer<List<Repo>>() {
+            mObservable
+//                    .observeOn(AndroidScheduler.mainThread())
+                    .observeOn(Schedulers.newThread())
+                    .subscribe(new Consumer<List<Repo>>() {
                 @Override
                 public void accept(List<Repo> repos) {
                     updateUi(repos);

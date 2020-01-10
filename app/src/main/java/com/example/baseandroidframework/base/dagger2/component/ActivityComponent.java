@@ -1,8 +1,6 @@
-package com.example.baseandroidframework.dagger2.component;
+package com.example.baseandroidframework.base.dagger2.component;
 
-import android.app.Activity;
-
-import com.example.baseandroidframework.dagger2.module.NetModule;
+import com.example.baseandroidframework.base.dagger2.module.HttpModule;
 import com.example.baseandroidframework.retrofit.RetrofitActivity;
 
 import javax.inject.Singleton;
@@ -18,7 +16,7 @@ import dagger.Component;
  * @package:com.example.baseandroidframework.dagger2.component
  */
 @Singleton
-@Component(modules = {NetModule.class})
+@Component(modules = {HttpModule.class})
 public interface ActivityComponent  {
     void inject(RetrofitActivity retrofitActivity);
 }

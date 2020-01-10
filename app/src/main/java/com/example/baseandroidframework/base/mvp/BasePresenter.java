@@ -1,4 +1,4 @@
-package com.example.baseandroidframework.base;
+package com.example.baseandroidframework.base.mvp;
 
 /*
  * 所有Presenter的基类

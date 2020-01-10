@@ -1,6 +1,6 @@
 package com.example.baseandroidframework.demo;
 
-import com.example.baseandroidframework.base.BasePresenter;
+import com.example.baseandroidframework.base.mvp.BasePresenter;
 import com.example.baseandroidframework.demo.contracts.IDownLoadContrat;
 
 /*

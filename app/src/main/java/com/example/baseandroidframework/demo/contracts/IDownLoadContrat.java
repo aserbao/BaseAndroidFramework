@@ -1,8 +1,7 @@
 package com.example.baseandroidframework.demo.contracts;
 
-import com.example.baseandroidframework.base.BasePresenter;
-import com.example.baseandroidframework.base.IBasePresenter;
-import com.example.baseandroidframework.base.IBaseView;
+import com.example.baseandroidframework.base.mvp.IBasePresenter;
+import com.example.baseandroidframework.base.mvp.IBaseView;
 
 /*
  * 接口管理类

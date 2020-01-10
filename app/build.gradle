@@ -21,6 +21,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 dependencies {
@@ -38,13 +41,13 @@ dependencies {
 
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.2'
     implementation 'com.squareup.okhttp3:okhttp:4.2.2'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
     implementation 'com.squareup.retrofit2:retrofit-converters:2.6.2'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
 
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
 
-    implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC0@jar"
+//    implementation "io.reactivex.rxjava3:rxjava:3.0.0-RC0@jar"
 
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.21'
