@@ -28,7 +28,6 @@ public class MyApplication extends Application {
         instance = this;
     }
 
-
     public void registerActivity(Activity act) {
         if (allActivities == null) {
             allActivities = new HashSet<Activity>();
