@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.baseandroidframework.R;
-import com.example.baseandroidframework.dagger2.component.DaggerActivityComponent;
+import com.example.baseandroidframework.base.dagger2.component.DaggerActivityComponent;
 
 import org.jetbrains.annotations.NotNull;
 

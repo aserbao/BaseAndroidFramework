@@ -8,5 +8,5 @@ package com.example.baseandroidframework.model;
  * @project:BaseAndroidFramework
  * @package:com.example.baseandroidframework.model
  */
-public class http {
+public class test {
 }

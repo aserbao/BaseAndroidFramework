@@ -1,5 +1,9 @@
 package com.example.baseandroidframework.model.http;
 
+import com.example.baseandroidframework.model.http.reponse.VideoHttpResponse;
+
+import io.reactivex.ObservableSource;
+
 /**
  * 功能: 网络请求接口
  *
@@ -9,4 +13,5 @@ package com.example.baseandroidframework.model.http;
  * @package:com.example.baseandroidframework.model.http
  */
 public interface IHttpHelper {
+
 }
