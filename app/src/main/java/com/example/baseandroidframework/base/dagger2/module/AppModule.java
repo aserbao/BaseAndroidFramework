@@ -1,6 +1,12 @@
 package com.example.baseandroidframework.base.dagger2.module;
 
 import com.example.baseandroidframework.base.app.MyApplication;
+import com.example.baseandroidframework.model.db.GreendaoHelper;
+import com.example.baseandroidframework.model.db.IDBHelper;
+import com.example.baseandroidframework.model.http.IHttpHelper;
+import com.example.baseandroidframework.model.http.RetrofitHelper;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -26,5 +32,16 @@ public class AppModule {
         return application;
     }
 
+    @Provides
+    @Singleton
+    IHttpHelper provideRetrofitHelper(RetrofitHelper retrofitHelper){
+        return retrofitHelper;
+    }
+
+    @Provides
+    @Singleton
+    IDBHelper provideGreendaoHelper(GreendaoHelper greendaoHelper){
+        return greendaoHelper;
+    }
 
 }
